@@ -3,7 +3,7 @@ const app = express();
 const dotenv=require('dotenv');
 const mongoose = require('mongoose');
 
-const productsRoute=require("./routes/products");
+const userRoute=require("./routes/userRoute");
 
 dotenv.config({path:'./config.env'})
 
@@ -17,13 +17,7 @@ mongoose.connect(process.env.DB_LOCAL,{
     useFindAndModify:true,
 });
 
-app.get("/api/products",productsRoute);;
-
-app.use((req,res,next)=>{
-    const error=new Error(`Not found - ${req.originalUrl}`)
-    res.status(404);
-    next(error);
-})
+app.use("/api/users",userRoute);
 
 const PORT = process.env.PORT || 5000;
 
