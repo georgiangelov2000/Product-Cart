@@ -10,12 +10,12 @@ const Register = ({ history }) => {
   const { user, loading } = auth;
 
   const [formData, setFormData] = useState({
-    email: "",
     username: "",
     password: "",
+    email: "",
   });
 
-  const { email, username, password } = formData;
+  const { username, email, password } = formData;
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,6 +24,8 @@ const Register = ({ history }) => {
   useEffect(() => {
     if (user) {
       history.push("/login");
+    } else {
+      history.push("/register");
     }
     setFormData("");
   }, [history, user]);
@@ -33,7 +35,7 @@ const Register = ({ history }) => {
     if (formData === null) {
       console.log("error");
     } else {
-      dispatch(register(email, username, password));
+      dispatch(register(username, email, password));
     }
   };
 
@@ -44,17 +46,6 @@ const Register = ({ history }) => {
       ) : (
         <Form onSubmit={onSubmit} className="text-center mt-2">
           <h1>Register Form</h1>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              type="email"
-              name="email"
-              value={email}
-              placeholder="Enter email"
-              onChange={onChange}
-            />
-            <Form.Text className="text-muted">Enter email address</Form.Text>
-          </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicText">
             <Form.Label>Username</Form.Label>
@@ -68,6 +59,18 @@ const Register = ({ history }) => {
             <Form.Text className="text-muted">Enter username</Form.Text>
           </Form.Group>
 
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              type="email"
+              name="email"
+              value={email}
+              placeholder="Enter email"
+              onChange={onChange}
+            />
+            <Form.Text className="text-muted">Enter email address</Form.Text>
+          </Form.Group>
+          
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
@@ -79,9 +82,11 @@ const Register = ({ history }) => {
             />
             <Form.Text className="text-muted">Enter password</Form.Text>
           </Form.Group>
+
           <Button variant="primary" block size="sm" type="submit">
             Submit
           </Button>
+          
         </Form>
       )}
     </>
