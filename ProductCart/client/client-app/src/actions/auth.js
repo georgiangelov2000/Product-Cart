@@ -3,6 +3,7 @@ import {
   REGISTER_FAIL,
   REGISTER_REQUEST,
 } from "../types/types";
+import axios from "axios";
 
 export const register = (username, email, password) => async (dispatch) => {
   try {
@@ -27,7 +28,7 @@ export const register = (username, email, password) => async (dispatch) => {
       payload: res.data,
     });
 
-    localStorage.setItem("user", JSON.stringify(data));
+    localStorage.setItem("user", JSON.stringify(res.data));
   } catch (error) {
     dispatch({
       type: REGISTER_FAIL,

@@ -1,12 +1,16 @@
 const express = require("express");
 const app = express();
+
 const dotenv=require('dotenv');
 const mongoose = require('mongoose');
+
+const cors=require('cors');
 
 const userRoute=require("./routes/userRoute");
 
 dotenv.config({path:'./config.env'})
 
+app.use(cors());
 app.use(express.json({ extended: false }));
 
 mongoose.connect(process.env.DB_LOCAL,{
