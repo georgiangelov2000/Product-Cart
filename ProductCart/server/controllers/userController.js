@@ -1,8 +1,15 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
 const generateToken = require("../utils/generateToken");
+const { check, validationResult } = require("express-validator");
 
 const registerUser = asyncHandler(async (req, res) => {
+
+  const errors=validationResult(req);
+  if(!errors.isEmpty()){
+    return res.status(400).json({ errors:erros.array() });
+  }
+
   const { username, email, password } = req.body;
 
   const userExists = await User.findOne({ email });
@@ -22,8 +29,8 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(201).json({
       _id: user._id,
       username: user.username,
-      password: user.password,
       email: user.email,
+      password: user.password,
       isAdmin: user.isAdmin,
       token: generateToken(user._id),
     });
@@ -54,7 +61,7 @@ const loginUser = asyncHandler(async (req, res) => {
 });
 
 const getUserProfile = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.params.id);
+  const user = await User.findById(req.user._id);
   console.log(user);
 
   if (user) {

@@ -7,6 +7,11 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
 
+  PROFILE_REQUEST,
+  PROFILE_DETAILS_SUCCESS,
+  PROFILE_FAIL,
+  UPDATE_PROFILE_RESET,
+
   LOGOUT
 } from "../types/types";
 
@@ -74,6 +79,30 @@ function authReducer(state = initialState, action) {
         error: null
       }
     }
+
+   //Update profile types
+
+   case PROFILE_REQUEST:
+     return {
+       ...state,
+       loading:true,
+     }
+
+    case PROFILE_DETAILS_SUCCESS:
+      return {
+        ...state,
+        loading:false,
+        user:payload
+      }
+    
+    case PROFILE_FAIL:
+      return {
+        loading:false,
+        error:payload
+      }
+
+    case UPDATE_PROFILE_RESET:
+      return {}
 
     default:
       return state;

@@ -56,7 +56,7 @@ const Register = ({ history }) => {
               value={username}
               placeholder="Enter username"
             />
-            <Form.Text className="text-muted">Enter username</Form.Text>
+            <Form.Text className="text-muted">Please Enter username</Form.Text>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -68,7 +68,7 @@ const Register = ({ history }) => {
               placeholder="Enter email"
               onChange={onChange}
             />
-            <Form.Text className="text-muted">Enter email address</Form.Text>
+            <Form.Text className="text-muted">Please Enter email address</Form.Text>
           </Form.Group>
           
           <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -80,13 +80,13 @@ const Register = ({ history }) => {
               value={password}
               placeholder="Password"
             />
-            <Form.Text className="text-muted">Enter password</Form.Text>
+            <Form.Text className="text-muted">Please Enter password</Form.Text>
           </Form.Group>
 
           <Button variant="primary" block size="sm" type="submit">
             Submit
           </Button>
-          
+
         </Form>
       )}
     </>

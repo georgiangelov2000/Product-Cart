@@ -48,7 +48,7 @@ const Login = ({ history }) => {
           type="email"
           placeholder="Enter email"
         />
-        <Form.Text className="text-muted">login email</Form.Text>
+        <Form.Text className="text-muted"> Please login email</Form.Text>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -59,7 +59,7 @@ const Login = ({ history }) => {
           type="password"
           placeholder="Password"
         />
-        <Form.Text className="text-muted">login password</Form.Text>
+        <Form.Text className="text-muted"> Please login password</Form.Text>
       </Form.Group>
       <Button variant="primary" block size="sm" type="submit">
         Submit

@@ -8,7 +8,7 @@ const initialState = {};
 const middleware = [thunk];
 
 const reducer=combineReducers({
-  auth
+  auth,
 })
 
 const store = createStore(
