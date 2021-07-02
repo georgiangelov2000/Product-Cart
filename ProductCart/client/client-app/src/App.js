@@ -19,7 +19,7 @@ function App() {
           <Route exact path="/" component={HomeScreen} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
-          <Route exact path="/update-profile" component={UpdateProfile} />
+          <Route path="/update-profile" component={UpdateProfile} />
         </Switch>
       </Container>
     </>

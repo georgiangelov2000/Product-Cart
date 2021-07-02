@@ -2,17 +2,17 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   REGISTER_REQUEST,
-  
+
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-
-  PROFILE_REQUEST,
-  PROFILE_DETAILS_SUCCESS,
-  PROFILE_FAIL,
-  UPDATE_PROFILE_RESET,
-
-  LOGOUT
+  
+  USER_DETAILS_REQUEST,
+  USER_DETAILS_SUCCESS,
+  USER_DETAILS_FAIL,
+  UPDATE_USER_RESET,
+  
+  LOGOUT,
 } from "../types/types";
 
 const initialState = {
@@ -26,6 +26,25 @@ function authReducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    //Details for User
+    case USER_DETAILS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case USER_DETAILS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        user: payload,
+      };
+    case USER_DETAILS_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: payload,
+      };
+
     //Register types
     case REGISTER_REQUEST:
       return {
@@ -65,45 +84,20 @@ function authReducer(state = initialState, action) {
     case LOGIN_FAIL:
       return {
         ...state,
-        isAuthenticated:false,
-        user:null,
-        error:payload
-      }
+        isAuthenticated: false,
+        user: null,
+        error: payload,
+      };
 
     //Logout types
-    case LOGOUT:{
+    case LOGOUT: {
       return {
         ...state,
-        isAuthenticated:false,
-        user:null,
-        error: null
-      }
+        isAuthenticated: false,
+        user: null,
+        error: null,
+      };
     }
-
-   //Update profile types
-
-   case PROFILE_REQUEST:
-     return {
-       ...state,
-       loading:true,
-     }
-
-    case PROFILE_DETAILS_SUCCESS:
-      return {
-        ...state,
-        loading:false,
-        user:payload
-      }
-    
-    case PROFILE_FAIL:
-      return {
-        loading:false,
-        error:payload
-      }
-
-    case UPDATE_PROFILE_RESET:
-      return {}
-
     default:
       return state;
   }
