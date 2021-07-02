@@ -99,16 +99,9 @@ export const getUserDetails = (id) => async (dispatch) => {
       type: USER_DETAILS_REQUEST,
     });
 
-     
-    const config = {
-      headers: {
-        Authorization: `Bearer ${user}`,
-      },
-    }
 
     const res = await axios.get(
       `http://localhost:5000/api/users/user/profile/${id}`,
-      config
     );
     console.log(res.data);
 

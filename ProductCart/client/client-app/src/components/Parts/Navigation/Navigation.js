@@ -1,86 +1,198 @@
 import React from "react";
-import {useDispatch,useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Navbar, Nav, Row, Col, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../../../actions/auth";
-import {
-  PersonFill,
-  Cart
-} from "react-bootstrap-icons";
+import { PersonFill, Cart } from "react-bootstrap-icons";
 
 const Navigation = () => {
-
-  const dispatch =useDispatch()
+  const dispatch = useDispatch();
 
   const auth = useSelector((state) => state.auth);
   const { user } = auth;
 
-  const onLogout=()=>{
+  const onLogout = () => {
     dispatch(logout());
   };
 
   return (
     <>
       {user ? (
-        <Navbar bg="dark" expand="lg">
-          <Navbar.Brand className="text-white">
-            George Shop
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto text-white">
-              <LinkContainer
-                style={{ textTransform: "capitalize" }}
-                className="text-white"
-                to="/home">
-                <Nav.Link className="d-flex align-items-center">
-                  <PersonFill className="mr-1" /> {user.username}
-                  </Nav.Link>
-              </LinkContainer>
-              <LinkContainer className="text-white" to="/cart">
-                <Nav.Link>
-                <Cart className="mb-1 mr-1" />  
-                   Cart
-                </Nav.Link>
-              </LinkContainer>
-              <LinkContainer className="text-white" to="/home">
-                <Nav.Link>Home</Nav.Link>
-              </LinkContainer>
-              <LinkContainer className="text-white" to="/update-profile">
-                <Nav.Link>Update profile</Nav.Link>
-              </LinkContainer>
-              <LinkContainer className="text-white" to="/dashboard">
-                <Nav.Link>Dashboard</Nav.Link>
-              </LinkContainer>
-              <LinkContainer className="text-white" to="/logout">
-                  <Button className=""  variant="dark" onClick={onLogout}>
-                    Logout
-                  </Button>
-              </LinkContainer>
+        <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+          <div className="container">
+            <a className="navbar-brand" href="index.html">
+              Simple Ecommerce
+            </a>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarsExampleDefault"
+              aria-controls="navbarsExampleDefault"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
 
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
+            <div
+              className="collapse navbar-collapse justify-content-end"
+              id="navbarsExampleDefault"
+            >
+              <ul className="navbar-nav m-auto">
+                <LinkContainer to="/">
+                  <li className="nav-item m-auto">
+                    <a
+                      className="nav-link"
+                      href="index.html "
+                      style={{ cursor: "pointer" }}
+                    >
+                      Home
+                    </a>
+                  </li>
+                </LinkContainer>
+
+                <LinkContainer to="/">
+                  <li className="nav-item m-auto">
+                    <a className="nav-link" style={{ cursor: "pointer" }}>
+                      {user.username}
+                    </a>
+                  </li>
+                </LinkContainer>
+
+                <LinkContainer to="/products">
+                  <li className="nav-item">
+                    <a className="nav-link" style={{ cursor: "pointer" }}>
+                      Products
+                    </a>
+                  </li>
+                </LinkContainer>
+
+                <LinkContainer to="/update-profile">
+                  <li className="nav-item">
+                    <a className="nav-link" style={{ cursor: "pointer" }}>
+                      Update Profile
+                    </a>
+                  </li>
+                </LinkContainer>
+
+                <LinkContainer to="/contacts">
+                  <li className="nav-item">
+                    <a className="nav-link" style={{ cursor: "pointer" }}>
+                      Contacts
+                    </a>
+                  </li>
+                </LinkContainer>
+
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    style={{ cursor: "pointer" }}
+                    onClick={onLogout}
+                  >
+                    Logout
+                  </a>
+                </li>
+
+                <form class="form-inline my-2 my-lg-0">
+                  <div class="input-group input-group-sm">
+                    <input
+                      type="text"
+                      class="form-control"
+                      aria-label="Small"
+                      aria-describedby="inputGroup-sizing-sm"
+                      placeholder="Search..."
+                    />
+                    <div class="input-group-append">
+                      <button
+                        type="button"
+                        class="btn btn-secondary btn-number"
+                      >
+                        <i class="fa fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <a class="btn btn-success btn-sm ml-3" href="cart.html">
+                    <i class="fa fa-shopping-cart"></i> Cart
+                    <span class=" ml-1 badge badge-light"> 0 </span>
+                  </a>
+                </form>
+              </ul>
+            </div>
+          </div>
+        </nav>
       ) : (
-        <Navbar bg="dark" expand="lg">
-          <Navbar.Brand className="text-white">
-            George Shop
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto text-white">
-              <LinkContainer className="text-white" to="/home">
-                <Nav.Link>Home</Nav.Link>
-              </LinkContainer>
-              <LinkContainer className="text-white" to="/register">
-                <Nav.Link>Register</Nav.Link>
-              </LinkContainer>
-              <LinkContainer className="text-white" to="/login">
-                <Nav.Link>Login</Nav.Link>
-              </LinkContainer>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
+        <>
+          <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+            <div className="container">
+              <a className="navbar-brand" href="index.html">
+                Simple Ecommerce
+              </a>
+              <button
+                className="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span className="navbar-toggler-icon"></span>
+              </button>
+
+              <div
+                className="collapse navbar-collapse justify-content-end"
+                id="navbarsExampleDefault"
+              >
+                <ul className="navbar-nav m-auto">
+                  <LinkContainer to="/">
+                    <li className="nav-item m-auto">
+                      <a
+                        className="nav-link"
+                        href="index.html "
+                        style={{ cursor: "pointer" }}
+                      >
+                        Home
+                      </a>
+                    </li>
+                  </LinkContainer>
+
+                  <LinkContainer to="/register">
+                    <li className="nav-item">
+                      <a className="nav-link" style={{ cursor: "pointer" }}>
+                        Register
+                      </a>
+                    </li>
+                  </LinkContainer>
+
+                  <LinkContainer to="/login">
+                    <li className="nav-item">
+                      <a className="nav-link" style={{ cursor: "pointer" }}>
+                        Login
+                      </a>
+                    </li>
+                  </LinkContainer>
+
+                  <LinkContainer to="/products">
+                    <li className="nav-item">
+                      <a className="nav-link" style={{ cursor: "pointer" }}>
+                        Products
+                      </a>
+                    </li>
+                  </LinkContainer>
+
+                  <LinkContainer to="/contacts">
+                    <li className="nav-item">
+                      <a className="nav-link" style={{ cursor: "pointer" }}>
+                        Contacts
+                      </a>
+                    </li>
+                  </LinkContainer>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </>
       )}
     </>
   );
