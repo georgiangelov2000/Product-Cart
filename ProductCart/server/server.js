@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const cors=require('cors');
 
 const userRoute=require("./routes/userRoute");
+const productRoute=require("./routes/productRoutes");
 
 dotenv.config({path:'./config.env'})
 
@@ -22,6 +23,7 @@ mongoose.connect(process.env.DB_LOCAL,{
 });
 
 app.use("/api/users",userRoute);
+app.use("/api/products",productRoute);
 
 const PORT = process.env.PORT || 5000;
 
