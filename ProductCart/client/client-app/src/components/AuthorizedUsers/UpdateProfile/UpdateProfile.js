@@ -1,43 +1,83 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails } from "../../../actions/auth";
+import { Form, Button, Row, Col } from "react-bootstrap";
 
-const UpdateProfile = () => {
+const UpdateProfile = ({ history }) => {
+  const dispatch = useDispatch();
+
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [id, setId] = useState("");
+
+  const userDetails = useSelector((state) => state.userDetails);
+  const { currentUser } = userDetails;
+  const userLogin = useSelector((state) => state.userLogin);
+  const { user } = userLogin;
+
+  useEffect(() => {
+    if (!user) {
+      history.push("/login");
+    } else {
+      if (!currentUser.username) {
+        dispatch(getUserDetails("profile"));
+      } else {
+        setUsername(currentUser.username);
+        setEmail(currentUser.email);
+        setId(currentUser._id);
+      }
+    }
+  }, [dispatch, history, user, currentUser]);
+
   return (
-    <div className="mt-5">
-      <form className="w-50 text-center m-auto ">
-        <div className="form-group">
-          <label for="exampleFormControlInput1">Email address</label>
-          <input
-            type="email"
-            className="form-control"
-            id="exampleFormControlInput1"
-            placeholder="name@example.com"
-          />
-        </div>
-        <div className="form-group">
-          <label for="exampleFormControlInput2">Username</label>
-          <input
-            type="texxt"
-            className="form-control"
-            id="exampleFormControlInput2"
-            placeholder="username"
-          />
-        </div>{" "}
-        <div className="form-group">
-          <label for="exampleFormControlInput3">Password</label>
-          <input
-            type="password"
-            className="form-control"
-            id="exampleFormControlInput3"
-            placeholder="password"
-          />
-        </div>
-        <button btn-sm type="button" class="btn btn-pill btn-primary">
-          Submit
-        </button>
-      </form>
-    </div>
+    <Row>
+      <Col xs={6} className="m-auto">
+        <Form className="text-center mt-2">
+          <h1>Update Profile</h1>
+
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              name="email"
+              size="sm"
+              type="email"
+              placeholder="Enter email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicUsername">
+            <Form.Label>Username</Form.Label>
+            <Form.Control
+              name="username"
+              size="sm"
+              type="text"
+              placeholder="Enter Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Identificator</Form.Label>
+            <Form.Control
+              name="id"
+              className="bg-secondary text-white"
+              readOnly
+              size="sm"
+              type="text"
+              value={id}
+              onChange={(e) => setId(e.target.value)}
+            />
+          </Form.Group>
+
+          <Button variant="primary" block size="sm" type="submit">
+            Submit
+          </Button>
+        </Form>
+      </Col>
+    </Row>
   );
 };
 
