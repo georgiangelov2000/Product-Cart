@@ -7,6 +7,6 @@ router.route("/").get(getUsers);
 router.route("/register").post(registerUser);
 router.route("/login").post(loginUser);
 router.route("/user/profile/:id").get(auth,getUserProfile);
-router.route("/user/update/profile/:id").get(auth,updateUserProfile);
+router.route("/user/update/profile/:id").put(auth,updateUserProfile);
 
 module.exports = router

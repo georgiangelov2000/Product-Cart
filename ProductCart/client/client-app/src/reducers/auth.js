@@ -11,6 +11,12 @@ import {
   USER_DETAILS_SUCCESS,
   USER_DETAILS_FAIL,
 
+  UPDATE_USER_DETAILS_REQUEST,
+  UPDATE_USER_DETAILS_SUCCESS,
+  UPDATE_USER_DETAILS_FAIL,
+
+  UPDATE_USER_RESET,
+
   LOGOUT,
 } from "../types/types";
 
@@ -64,3 +70,18 @@ export const userDetailsReducer = (state = { currentUser: {} }, action) => {
       return state;
   }
 };
+
+export const userUpdateReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case UPDATE_USER_DETAILS_REQUEST:
+      return { loading: true }
+    case UPDATE_USER_DETAILS_SUCCESS:
+      return { loading: false, user: action.payload }
+    case UPDATE_USER_DETAILS_FAIL:
+      return { loading: false, error: action.payload }
+    case UPDATE_USER_RESET:
+      return {}
+    default:
+      return state;
+  }
+}

@@ -1,7 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
 const generateToken = require("../utils/generateToken");
-const { check, validationResult } = require("express-validator");
 
 const registerUser = asyncHandler(async (req, res) => {
 
@@ -69,6 +68,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
       _id: user._id,
       username: user.username,
       email: user.email,
+      password:user.password,
       isAdmin: user.isAdmin,
     });
   } else {
@@ -92,6 +92,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
       _id: updatedUser._id,
       name: updatedUser.name,
       email: updatedUser.email,
+      password: updatedUser.password,
       isAdmin: updatedUser.isAdmin,
       token: generateToken(updatedUser._id),
     });

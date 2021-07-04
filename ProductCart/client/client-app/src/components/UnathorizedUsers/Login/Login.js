@@ -53,7 +53,7 @@ const Login = ({ history }) => {
             />
             <Form.Text className="text-muted">
               {" "}
-              Please enter login email
+              Please Enter login email
             </Form.Text>
           </Form.Group>
 
@@ -68,7 +68,7 @@ const Login = ({ history }) => {
             />
             <Form.Text className="text-muted">
               {" "}
-              Please enter login password
+              Please Enter login password
             </Form.Text>
           </Form.Group>
           <Button variant="primary" block size="sm" type="submit">
