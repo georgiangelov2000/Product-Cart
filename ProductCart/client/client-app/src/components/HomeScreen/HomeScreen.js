@@ -1,11 +1,37 @@
-import React from 'react'
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../../actions/products";
+import { Container, Row, Col } from "react-bootstrap";
+import Product from "../Product/Product";
 
 const HomeScreen = () => {
-    return (
-        <div>
-            <h1>Prodcts</h1>
-        </div>
-    )
-}
+  const dispatch = useDispatch();
+  const listOfProducts = useSelector((state) => state.getProducts);
+  const { loading, error, products } = listOfProducts;
+  
+  console.log(products);
 
-export default HomeScreen
+  useEffect(() => {
+    dispatch(getProducts());
+  }, [dispatch]);
+
+  return (
+    <Container>
+      <Row className="mt-5">
+        {products == null ? (
+          <h1>Loading....</h1>
+        ) : (
+          <>
+            {products.map((product) => (
+              <Col className="mb-4" key={product.id} sm={6} md={6} lg={6} xl={4}>
+                <Product product={product} />
+              </Col>
+            ))}
+          </>
+        )}
+      </Row>
+    </Container>
+  );
+};
+
+export default HomeScreen;
