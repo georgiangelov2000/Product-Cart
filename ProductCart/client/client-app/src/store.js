@@ -9,7 +9,7 @@ import {
   userUpdateReducer
 } from "./reducers/auth";
 
-import {getProductsReducer} from"./reducers/products";
+import {getProductsReducer,getProductDetailsReducer} from"./reducers/products";
 
 const initialState = {};
 const middleware = [thunk];
@@ -21,7 +21,8 @@ const reducer=combineReducers({
   userDetails: userDetailsReducer,
   userUpdate: userUpdateReducer,
 
-  getProducts:getProductsReducer
+  getProducts:getProductsReducer,
+  getProductDetails:getProductDetailsReducer
 })
 
 const store = createStore(
