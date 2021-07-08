@@ -10,7 +10,7 @@ import {
 
 const initialState = {
   products: null,
-  product: null,
+  product: [],
   errors: null,
   loading: false,
 };

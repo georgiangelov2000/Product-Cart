@@ -6,7 +6,8 @@ import Register from "./components/UnathorizedUsers/Register/Register";
 import Login from "./components/UnathorizedUsers/Login/Login";
 import UpdateProfile from "./components/AuthorizedUsers/UpdateProfile/UpdateProfile";
 import HomeScreen from "./components/HomeScreen/HomeScreen";
-import ProductScreen from './components/ProductScreen/ProductScreen';
+import ProductScreen from "./components/ProductScreen/ProductScreen";
+import Cart from "./components/AuthorizedUsers/Cart/Cart";
 
 import { Switch, Route } from "react-router-dom";
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/update-profile" component={UpdateProfile} />
           <Route path="/product/:id" component={ProductScreen} />
+          <Route path="/cart/:id?" component={Cart} />
         </Switch>
       </Container>
     </>
