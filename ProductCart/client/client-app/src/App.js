@@ -8,6 +8,7 @@ import UpdateProfile from "./components/AuthorizedUsers/UpdateProfile/UpdateProf
 import HomeScreen from "./components/HomeScreen/HomeScreen";
 import ProductScreen from "./components/ProductScreen/ProductScreen";
 import Cart from "./components/AuthorizedUsers/Cart/Cart";
+import ShippingScreen from "./components/AuthorizedUsers/ShippingScreen/ShippingScreen"
 
 import { Switch, Route } from "react-router-dom";
 
@@ -20,6 +21,7 @@ function App() {
       <Container>
         <Switch>
           <Route exact path="/" component={HomeScreen} />
+          <Route path='/shipping' component={ShippingScreen} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/update-profile" component={UpdateProfile} />

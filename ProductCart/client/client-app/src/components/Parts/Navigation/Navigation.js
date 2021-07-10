@@ -36,9 +36,6 @@ const Navigation = () => {
                 <LinkContainer to="/update-profile">
                   <Nav.Link>Update profile</Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="/products">
-                  <Nav.Link>Products</Nav.Link>
-                </LinkContainer>
                 <LinkContainer to="/contacts">
                   <Nav.Link>Contacts</Nav.Link>
                 </LinkContainer>
@@ -78,9 +75,6 @@ const Navigation = () => {
                 </LinkContainer>
                 <LinkContainer to="/register">
                   <Nav.Link>Register</Nav.Link>
-                </LinkContainer>
-                <LinkContainer to="/products">
-                  <Nav.Link>Products</Nav.Link>
                 </LinkContainer>
                 <LinkContainer to="/contacts">
                   <Nav.Link>Contacts</Nav.Link>

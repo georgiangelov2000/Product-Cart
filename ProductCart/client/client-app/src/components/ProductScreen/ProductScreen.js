@@ -30,7 +30,7 @@ const ProductScreen = ({ history, match }) => {
   return (
     <>
       <Link to="/">
-        <Button className="mt-3" variant="outline-info">
+        <Button className="mt-3 mb-3" variant="outline-info">
           Go Back
         </Button>{" "}
       </Link>
@@ -45,7 +45,7 @@ const ProductScreen = ({ history, match }) => {
       ) : (
         <Row>
           <Col md={6}>
-            <Image src={product.image} fluid />
+            <Image src={product.image} rounded fluid />
           </Col>
           <Col md={3}>
             <ListGroup variant="flush">

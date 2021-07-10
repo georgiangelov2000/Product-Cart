@@ -22,7 +22,7 @@ const Login = ({ history }) => {
 
   useEffect(() => {
     if (user) {
-      history.push("/dashboard");
+      history.push("/cart");
     }
     setFormData("");
   }, [history, user]);

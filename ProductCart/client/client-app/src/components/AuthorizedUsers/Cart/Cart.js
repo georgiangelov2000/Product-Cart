@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart,removeFromCart } from "../../../actions/cart";
+import { addToCart, removeFromCart } from "../../../actions/cart";
 import {
   Row,
   Col,
@@ -10,6 +10,7 @@ import {
   Form,
   Button,
   Card,
+  Alert,
 } from "react-bootstrap";
 
 const Cart = ({ match, location, history }) => {
@@ -29,26 +30,24 @@ const Cart = ({ match, location, history }) => {
   }, [dispatch, productId, qty]);
 
   const removeFromCartHandler = (id) => {
-    dispatch(removeFromCart(id))
-  }
+    dispatch(removeFromCart(id));
+  };
 
   const checkoutHandler = () => {
-    history.push('/login?redirect=shipping')
-  }
-
-
+    history.push("/shipping");
+  };
   return (
-    <Row>
+    <Row className="mt-4">
       <Col md={8}>
         <h1>Shopping Cart</h1>
         {cartItems.length === 0 ? (
-          <span>
+          <Alert variant="primary">
             Your cart is empty <Link to="/">Go Back</Link>
-          </span>
+          </Alert>
         ) : (
           <ListGroup variant="flush">
             {cartItems.map((item) => (
-              <ListGroup.Item key={item.product}>
+              <ListGroup.Item key={item.id}>
                 <Row>
                   <Col md={2}>
                     <Image src={item.image} alt={item.name} fluid rounded />
@@ -76,11 +75,10 @@ const Cart = ({ match, location, history }) => {
                   </Col>
                   <Col md={2}>
                     <Button
-                      type="button"
-                      variant="light"
+                      variant="danger"
                       onClick={() => removeFromCartHandler(item.product)}
                     >
-                      Delete
+                      Danger
                     </Button>
                   </Col>
                 </Row>
@@ -105,7 +103,8 @@ const Cart = ({ match, location, history }) => {
             <ListGroup.Item>
               <Button
                 type="button"
-                className="btn-block"
+                className="btn-dark"
+                block
                 disabled={cartItems.length === 0}
                 onClick={checkoutHandler}
               >
@@ -115,7 +114,6 @@ const Cart = ({ match, location, history }) => {
           </ListGroup>
         </Card>
       </Col>
-      <Col md={4}></Col>
     </Row>
   );
 };

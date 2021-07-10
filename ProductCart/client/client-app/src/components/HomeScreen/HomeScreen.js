@@ -9,8 +9,6 @@ const HomeScreen = () => {
   const listOfProducts = useSelector((state) => state.getProducts);
   const { loading, error, products } = listOfProducts;
   
-  console.log(products);
-
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);

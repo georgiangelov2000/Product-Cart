@@ -24,9 +24,9 @@ const Register = ({ history }) => {
 
   useEffect(() => {
     if (user) {
-      history.push("/login");
+      history.push("/cart");
     } else {
-      history.push("/register");
+      history.push("/login");
     }
     setFormData("");
   }, [history, user]);
