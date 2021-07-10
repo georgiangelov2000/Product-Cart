@@ -30,6 +30,9 @@ const Navigation = () => {
                 <LinkContainer to="/">
                   <Nav.Link> {user.username}</Nav.Link>
                 </LinkContainer>
+                <LinkContainer to="/cart">
+                  <Nav.Link>Cart</Nav.Link>
+                </LinkContainer>
                 <LinkContainer to="/update-profile">
                   <Nav.Link>Update profile</Nav.Link>
                 </LinkContainer>
@@ -41,11 +44,11 @@ const Navigation = () => {
                 </LinkContainer>
               </Nav>
 
-                <Nav.Link>
-                  <Button size="sm" onClick={onLogout}>
-                    Logout
-                  </Button>
-                </Nav.Link>
+              <Nav.Link>
+                <Button size="sm" onClick={onLogout}>
+                  Logout
+                </Button>
+              </Nav.Link>
               <Form inline>
                 <FormControl
                   type="text"
