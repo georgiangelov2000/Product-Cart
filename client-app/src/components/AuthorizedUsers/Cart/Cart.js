@@ -78,7 +78,7 @@ const Cart = ({ match, location, history }) => {
                       variant="danger"
                       onClick={() => removeFromCartHandler(item.product)}
                     >
-                      Danger
+                      Delete
                     </Button>
                   </Col>
                 </Row>
