@@ -7,8 +7,9 @@ const app = express()
 
 dotenv.config()
 
-import userRoute from './routes/userRoute.js';
+import userRoute from './routes/userRoutes.js';
 import productRoute from './routes/productRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
 
 const url=('mongodb://localhost:27017/product-cart')
 
@@ -25,6 +26,7 @@ mongoose.connect(url,{
 
 app.use('/api/users',userRoute);
 app.use('/api/products',productRoute);
+app.use('/api/orders',orderRoutes);
 
 const PORT = process.env.PORT || 5000
 
